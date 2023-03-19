@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #111;">
     <a class="navbar-brand" href="#">
-      <img src="@/assets/pepega.png" width="100" height="100" alt="pepega">
+      <img src="@/assets/pepega.png" width="80" height="80" alt="pepega">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
