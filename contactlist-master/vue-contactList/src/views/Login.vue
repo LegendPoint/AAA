@@ -1,21 +1,28 @@
 <template>
   <main>
     <div class="container">
+      <div class="welcome-text">
+    <h1>WELCOME!!!</h1>
+  </div>
       <div class="loginPanel">
         <h1>LOGIN</h1><br/>
+        <div>
+          <p class="info" >USERNAME</p>
+          <input v-model="username" type="text" placeholder="Username">
+          <div id="username_empty" >Invalid Username</div>
+          <div id="username_incorrect" >Incorrect username or password</div>
           <div>
-            <p class="info" >USERNAME</p>
-            <input v-model="username" type="text" placeholder="Username">
-            <div id="username_empty" >Invalid Username</div>
-            <div id="username_incorrect" >Incorrect username or password</div>
-            <p class="info" placeholder="Password">PASSWORD</p>
-            <input v-model="password" type="password" placeholder="Password">
-            <div id="password_empty" class="input_error">Invalid Password</div>
-          </div><br/>
-          <h5>NO ACCOUNT? <a href="/register">SIGN UP HERE</a></h5><br/>
+          <p class="info" placeholder="Password">PASSWORD</p>
+        </div>
+          <input v-model="password" type="password" placeholder="Password">
+          <div id="password_empty" class="input_error">Invalid Password</div>
+        </div><br/>
+        <h5>NO ACCOUNT? <a href="/register">SIGNUP HERE</a></h5><br/>
         <button type="submit" @click="login">SIGN IN</button>
+        <button v-if="isLoggedIn" @click="logout">LOGOUT</button>
       </div>
-    </div>
+  
+</div>
   </main>
 </template>
 
@@ -26,12 +33,13 @@ export default{
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      isLoggedIn: false,
     }
   },
   methods: {
     
-  async login() {
+    async login() {
       let user_empty = document.getElementById('username_empty')
       let pass_empty = document.getElementById('password_empty')
       let user_incorrect = document.getElementById('username_incorrect')
@@ -45,6 +53,7 @@ export default{
         console.log(result.data);
         //each user/pass should be unique, thus 1
         if(result.data.length == 1){
+          this.isLoggedIn = true;
           this.$router.push('/contactlist');
         }
         else{
@@ -59,6 +68,11 @@ export default{
         console.error(error);
       });
     },
+    
+    logout() {
+      this.isLoggedIn = false;
+      this.$router.push('/');
+    }
   },
 };
 
@@ -77,6 +91,7 @@ p.info {
 
 #username_empty,
 #password_empty{
+  
   margin-left: 3px;
   opacity: 60%;
   font-size: 80%;
@@ -93,5 +108,33 @@ p.info {
   color: red;
   display: none;
 }
+
+.container{
+    display: left;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    background-color: rgb(220, 227, 233);
+    border-radius: 16px 16px 16px 16px;
+    padding: 100%;
+    width: 100%;
+    
+}
+  .loginPanel {
+    font-family: 'Montserrat', sans-serif;
+    margin-left:0px;
+    margin-right:0px;
+    width: 100%;
+    text-align: center;
+    padding-left:50px;
+  }
+  .welcome-text {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
+  padding:50px;
+ 
+}
+  
+
 
 </style>
