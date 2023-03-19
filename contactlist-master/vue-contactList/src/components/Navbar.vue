@@ -1,28 +1,31 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-       
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #111;">
+    <a class="navbar-brand" href="#">
+      <img src="@/assets/pepega.png" width="100" height="100" alt="pepega">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/contactlist" class="nav-link">CONTACT LIST</router-link>
+          <router-link to="/contactlist" class="nav-link" style="color: white;">CONTACT LIST</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/register" class="nav-link">REGISTER</router-link>
+          <router-link to="/userinfo" class="nav-link" style="color: white;">USER INFO</router-link>
         </li>
+        <!-- <li class="nav-item">
+          <router-link to="/register" class="nav-link" style="color: white;">REGISTER</router-link>
+        </li> -->
         <li class="nav-item">
-          <router-link to="/" class="nav-link">LOGIN</router-link>
+          <router-link to="/" class="nav-link" style="color: white;">LOGIN</router-link>
         </li>
-        
       </ul>
-          
-        </div>
-      </nav>
-    </template>
+    </div>
+  </nav>
+</template>
+
     
     <script>
 import Register from '@/views/Register.vue'
