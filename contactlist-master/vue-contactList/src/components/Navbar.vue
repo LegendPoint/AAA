@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #111;">
     <a class="navbar-brand" href="#">
-      <img src="@/assets/pepega.png" width="80" height="80" alt="pepega">
+      
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,8 +13,11 @@
           <router-link to="/contactlist" class="nav-link" style="color: white;">CONTACT LIST</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/userinfo" class="nav-link" style="color: white;">USER INFO</router-link>
+          <router-link to="/contactadd" class="nav-link" style="color: white;">ADD CONTACT</router-link>
         </li>
+        <!-- <li class="nav-item">
+          <router-link to="/userinfo" class="nav-link" style="color: white;">USER INFO</router-link>
+        </li> -->
         <!-- <li class="nav-item">
           <router-link to="/register" class="nav-link" style="color: white;">REGISTER</router-link>
         </li> -->
@@ -25,6 +28,7 @@
     </div>
   </nav>
 </template>
+
 
     
     <script>
