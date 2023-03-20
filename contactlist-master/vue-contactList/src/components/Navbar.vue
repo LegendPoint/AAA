@@ -1,31 +1,35 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-       
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #111;">
+    <a class="navbar-brand" href="#">
       
-        
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/contactlist" class="nav-link">CONTACT LIST</router-link>
+          <router-link to="/contactlist" class="nav-link" style="color: white;">CONTACT LIST</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/register" class="nav-link">REGISTER</router-link>
+          <router-link to="/contactadd" class="nav-link" style="color: white;">ADD</router-link>
         </li>
+        <!-- <li class="nav-item">
+          <router-link to="/userinfo" class="nav-link" style="color: white;">USER INFO</router-link>
+        </li> -->
+        <!-- <li class="nav-item">
+          <router-link to="/register" class="nav-link" style="color: white;">REGISTER</router-link>
+        </li> -->
         <li class="nav-item">
-          <router-link to="/" class="nav-link">LOGIN</router-link>
+          <router-link to="/" class="nav-link" style="color: white;">LOGIN</router-link>
         </li>
-        
       </ul>
-          <form class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-    </template>
+    </div>
+  </nav>
+</template>
+
+
     
     <script>
 import Register from '@/views/Register.vue'
@@ -60,4 +64,10 @@ export default {
         left: 0;
         right: 0;
       }
+    nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
     </style>
