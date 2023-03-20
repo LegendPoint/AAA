@@ -77,26 +77,8 @@ export default {
 </script>
 
 <style>
-.container {
-  display: flex;
-  font-family: "Tilt Warp";
-  color: black;
-  background-color: aliceblue;
-  border-radius: 16px;
-  padding: 50px;
-  overflow-x: auto; /* allow horizontal scrolling if content overflows */
-  max-width: 100%; /* set a maximum width to prevent the container from becoming too wide */
-}
 
-.list table {
-  display: inline-block; /* allow tables to fill the available space next to each other */
-}
-
-.list table tr {
-  max-width: 500px; /* set a maximum width for the table rows */
-  overflow: hidden; /* hide any overflowing content */
-  text-overflow: ellipsis; /* add ellipsis (...) to indicate truncated content */
-  white-space: nowrap; /* prevent line breaks within cells */
-  margin-right: 50px; /* add some margin to separate tables */
-}
 </style>
+
+
+

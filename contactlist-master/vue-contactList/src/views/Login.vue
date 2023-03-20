@@ -7,9 +7,11 @@
             <p class="info" >USERNAME</p>
             <input v-model="username" type="text" placeholder="Username">
             <div id="username_empty" >Please enter your username</div>
+            <div id="username_empty" >Please enter your username</div>
             <div id="username_incorrect" >Incorrect username or password</div>
             <p class="info" placeholder="Password">PASSWORD</p>
             <input v-model="password" type="password" placeholder="Password">
+            <div id="password_empty" class="input_error">Please enter your password</div>
             <div id="password_empty" class="input_error">Please enter your password</div>
           </div><br/>
           <h5>NO ACCOUNT? <a href="/register">SIGN UP HERE</a></h5><br/>
@@ -48,7 +50,25 @@ export default{
         pass_empty.style.display = "none"
       }
     
+      //No username or password input
+      if(this.username.length == 0){
+        user_empty.style.display = "block";
+        user_incorrect.style.display = "none"
+      } else {
+        user_empty.style.display = "none"
+      }
+      if(this.password.length == 0){
+        pass_empty.style.display = "block";
+        user_incorrect.style.display = "none"
+      } else {
+        pass_empty.style.display = "none"
+      }
+    
       
+      let result = await axios.post("http://localhost:5001/login",{
+            username: this.username,
+            password: this.password
+      })
       let result = await axios.post("http://localhost:5001/login",{
             username: this.username,
             password: this.password
@@ -60,6 +80,11 @@ export default{
         }
       })
       .catch((error) => {
+        if(error.response.data.errorType == 'LoginFail'){
+            pass_empty.style.display == "none"
+            user_empty.style.display == "none"
+            user_incorrect.style.display = "block"
+        }
         if(error.response.data.errorType == 'LoginFail'){
             pass_empty.style.display == "none"
             user_empty.style.display == "none"

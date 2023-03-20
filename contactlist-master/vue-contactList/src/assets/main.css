@@ -28,6 +28,9 @@ a,
     width:50px;
     max-width: 50px;
     padding-right: 50px;
+    width:50px;
+    max-width: 50px;
+    padding-right: 50px;
   }
 
   #app {
@@ -35,6 +38,8 @@ a,
     /* grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
     width:100%; */
+    width:100%; */
   }
 }
+
 
