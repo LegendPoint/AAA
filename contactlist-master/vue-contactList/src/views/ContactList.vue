@@ -5,32 +5,25 @@
         <h1 style="text-align: center;">Contact List<br></h1>
         <div class="list">
           <table>
-                <tr>
-                  <th>Info</th>
-                </tr>
             <tbody>
-                <tr v-for="acontact in filterContacts" v-bind:key="acontact.id">
-                  <img v-bind:src=acontact.imageUrl style="max-width: 150px; max-height: 150px;"/>
-                  <tr>
-                    <td>{{acontact.firstname}}</td>
-                    <td>{{acontact.lastname}}</td><br>
-                  </tr>
-                  <tr>
-                    <td>Mobile:</td><td>{{acontact.mobileNo}}</td><br>
-                  </tr>
-                  <tr>
-                    <td>Email:</td><td>{{acontact.email}}</td><br>
-                  </tr>
-                  <tr>
-                    <td>Facebook:</td><td>{{acontact.facebook}}</td>
-                  </tr>
-                  <td>
-                    <router-link :to="{path:'/contactupdate' , name: 'contactupdate', params: {contactId: acontact._id}}">
-                      <button type="button" class="btn btn-warning">Update User</button>
-                    </router-link >
-                    <button @click="deleteContact(acontact._id)" class="btn btn-danger">Delete User</button>
-                  </td>
-                </tr>
+              <tr v-for="(acontact, index) in filterContacts" :key="acontact.id">
+                <td>
+                  <img :src="acontact.imageUrl" style="max-width: 150px; max-height: 300px;">
+                  <div>
+                    <div>{{acontact.firstname}} {{acontact.lastname}}</div>
+                    <div>Mobile: {{acontact.mobileNo}}</div>
+                    <div>Email: {{acontact.email}}</div>
+                    <div>Facebook: {{acontact.facebook}}</div>
+                    <div>
+                      <router-link :to="{path:'/contactupdate' , name: 'contactupdate', params: {contactId: acontact._id}}">
+                        <button type="button" class="btn btn-warning">Update User</button>
+                      </router-link >
+                      <button @click="deleteContact(acontact._id)" class="btn btn-danger">Delete User</button>
+                    </div>
+                  </div>
+                </td>
+                <td v-if="index % 2 === 0"></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -86,15 +79,25 @@ export default {
 <style>
 .container{
   display: flex;
+  flex-wrap:wrap;
   font-family: "Tilt Warp";
   color: black;
   background-color: aliceblue;
-  border-radius: 16px 16px 16px 16px;
+  border-radius: flex;
   width:100%;
+  height:100%;
   padding: 100px;
   padding-bottom:400px;
-  padding-right:1000px;
+  padding-right:100%;
+  padding-left:100%;
   white-space:nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.list table tbody tr {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: flex;
 }
 </style>
 
