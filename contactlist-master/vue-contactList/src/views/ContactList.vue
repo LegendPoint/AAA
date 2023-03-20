@@ -36,6 +36,12 @@
 
 export default {
   data() {
+    return{
+      name:'',
+      email:'',
+      telephone:''
+    }
+
 
   },
   methods:{
