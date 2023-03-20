@@ -3,77 +3,98 @@
     <div class="container">
       <div>
         <h1 style="text-align: center;">Contact List<br></h1>
-
-        <div class="form-group row">
-          <label for="name" class="col-sm-2 col-form-label">Name:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="name" v-model="newContact.name" placeholder="Enter name">
-          </div>
+        <div class="list">
+          <table>
+                <tr>
+                  <th>Info</th>
+                </tr>
+            <tbody>
+                <tr v-for="acontact in filterContacts" v-bind:key="acontact.id">
+                  <img v-bind:src=acontact.imageUrl style="max-width: 300px; max-height: 300px;"/>
+                  <tr>
+                    <td>{{acontact.firstname}}</td>
+                    <td>{{acontact.lastname}}</td><br>
+                  </tr>
+                  <tr>
+                    <td>Mobile:</td><td>{{acontact.mobileNo}}</td><br>
+                  </tr>
+                  <tr>
+                    <td>Email:</td><td>{{acontact.email}}</td><br>
+                  </tr>
+                  <tr>
+                    <td>Facebook:</td><td>{{acontact.facebook}}</td>
+                  </tr>
+                  <td>
+                    <router-link :to="{path:'/contactupdate' , name: 'contactupdate', params: {contactId: acontact._id}}">
+                      <button type="button" class="btn btn-warning">Update User</button>
+                    </router-link >
+                    <button @click="deleteContact(acontact._id)" class="btn btn-danger">Delete User</button>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
         </div>
-
-        <div class="form-group row">
-          <label for="telephone" class="col-sm-2 col-form-label">Mobile:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="telephone" v-model="newContact.telephone" placeholder="Enter telephone number">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="email" class="col-sm-2 col-form-label">Email:</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" v-model="newContact.email" placeholder="Enter email address">
-          </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary" @click="addContact">Add</button>
-
-        <hr>
-
-        <div class="row">
-          <div class="col-sm-4" v-for="(newContact, index) in contacts" :key="index">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{ newContact.name }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ newContact.telephone }}</h6>
-                <p class="card-text">{{ newContact.email }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
+  name: 'Contacts',
   data() {
     return {
-      newContact: {
-        name: '',
-        telephone: '',
-        email: ''
-      },
-      contacts: []
-    };
+      search: '',
+      Contacts : [],
+      uid: ''
+    }
   },
-  methods: {
-    addContact() {
-      this.contacts.push({...this.newContact});
-      this.newContact.name = '';
-      this.newContact.telephone = '';
-      this.newContact.email = '';
+  mounted() {
+    axios.get('http://127.0.0.1:5001/contacts')
+    .then((response)=>{
+      console.log(response.data)
+      this.Contacts = response.data
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  },
+  computed :{
+    filterContacts: function(){
+      return this.Contacts.filter((contact)=>{
+        return contact.firstname.match(this.search)
+      })
+    }
+  },
+  methods:{
+    deleteContact(contactId) {
+      axios.delete("http://127.0.0.1:5001/contacts/"+contactId)
+      .then((response)=>{
+        console.log('Delete Contact Id: ' + contactId)
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+      window.location.reload()
     }
   }
-};
+}
 </script>
 
 <style>
-.card {
-  margin-bottom: 20px;
+.container{
+  display: flex;
+  font-family: "Tilt Warp";
+  color: black;
+  background-color: aliceblue;
+  border-radius: 16px 16px 16px 16px;
+  width:100%;
+  padding: 100px;
+  padding-bottom:400px;
+  padding-right:1000px;
+  white-space:nowrap;
 }
 </style>
-
-
 
