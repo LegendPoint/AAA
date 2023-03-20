@@ -13,7 +13,7 @@
           <router-link to="/contactlist" class="nav-link" style="color: white;">CONTACT LIST</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/contactadd" class="nav-link" style="color: white;">ADD CONTACT</router-link>
+          <router-link to="/contactadd" class="nav-link" style="color: white;">ADD</router-link>
         </li>
         <!-- <li class="nav-item">
           <router-link to="/userinfo" class="nav-link" style="color: white;">USER INFO</router-link>
